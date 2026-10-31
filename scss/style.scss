@@ -1,0 +1,151 @@
+@use "variables" as v;
+@use "mixins" as m;
+
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: v.$font-base;
+    background: v.$color-bg;
+    color: v.$color-text;
+}
+
+
+.courses{
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 16px;
+}
+
+.courses__header{
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 32px;
+}
+
+.courses__title {
+    margin: 0;
+    font-size: v.$title-desktop;
+}
+
+.courses__subtitle {
+    margin: 0;
+    font-size: 15px;
+    color: v.$color-muted;
+}
+
+.courses__main {
+    display: grid;
+    justify-content: space-between;
+    gap: v.$gap;
+    grid-template-columns: repeat(3, 1fr);
+}
+.course-card__img {
+    width: 100%;
+    object-fit: cover;
+}
+.course-card {
+    display: flex;
+    flex-direction: column;
+    background: v.$color-card;
+    border-radius: v.$radius;
+    box-shadow: v.$shadow-card;
+    overflow: hidden;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.course-card:hover {
+    scale: 1.01;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+}
+
+
+.course-card__body {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    flex: 1;
+}
+
+
+.course-card__title {
+    margin: 0;
+    font-size: 18px;
+}
+
+.course-card__meta {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    font-size: 14px;
+    color: v.$color-muted;
+}
+
+
+.course-card__desc {
+    margin: 0;
+    font-size: 14px;
+    color: v.$color-muted;
+    flex: 1;
+}
+
+
+.course-card__btn {
+    width: auto;
+    align-self: flex-start;
+    padding: 10px 16px;
+    border: none;
+    border-radius: v.$radius-btn;
+    background: v.$color-accent;
+    color: #ffffff;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.course-card__btn:hover {
+    background: #1e4ed8;
+}
+
+
+
+.course-card--popular {
+    border: 2px solid v.$color-popular;
+}
+
+
+
+@media (max-width: v.$bp-desktop) {
+    .courses__header {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .courses__main {
+        grid-template-columns: repeat(2, 1fr); 
+    }
+}
+
+
+@media (max-width: v.$bp-tablet) {
+    .courses__title {
+        font-size: v.$title-mobile;
+    }
+
+    .courses__header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .courses__main {
+        grid-template-columns: 1fr; 
+    }
+}
